@@ -104,9 +104,14 @@ function onUpdate(obj) {
   key = $(obj).parent().parent().attr("id");
   var $target = $(obj).parent().prev();
   var v = $(obj).parent().prev().html();
-  var html = '<input type="text" class="w3-input w3-show-inline-block w3-border w3-border-red" style="width:calc(100% - 80px);" value="'+v+'">&nbsp;';
-  html += '<button type="button" class="w3-button w3-orange" style="margin-top:-4px;">수정</button>';
+  var html = '<input type="text" class="w3-input w3-show-inline-block w3-border w3-border-red" style="width:calc(100% - 150px);" value="'+v+'">&nbsp;';
+  html += '<button type="button" class="w3-button w3-orange" style="margin-top:-4px;" onclick="onUpdateDo(this);">수정</button>';
+  html += '<button type="button" class="w3-button w3-black" style="margin-top:-4px;" onclick="onCancel(this, \''+v+'\');">취소</button>';
   $target.html(html);
+}
+
+function onCancel(obj, val) {
+  var $target = $(obj).parent().html(val); 
 }
 
 function onDelete(obj) {
