@@ -11,4 +11,7 @@
 .wrs {border:4px solid rgb(25, 72, 122); margin:2rem 0; padding:0.5rem;}
   .wrs > li:first-child {float:left; width:calc(100% - 70px);}
   .wrs > li:last-child {float:right; text-align:right;}
-.gbooks {}
+.gbook {margin:1.5rem 10px; box-shadow:0 0 20px rgba(0,0,0,0.2); border-radius:10px; border:1px solid #ddd; padding:1rem;}
+.gbook > li:first-child {color:#999;}
+.gbook > li:nth-child(2) {color:rgb(15, 49, 80); border:1px solid rgb(187, 206, 243); font-size:1.25rem; padding:0.5rem;}
+.gbook > li:first-child {color:#999;}
