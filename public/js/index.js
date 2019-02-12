@@ -49,13 +49,12 @@ function init() {
   ref = db.ref("root/gbook");
   ref.on("child_added", onAdd);
   ref.on("child_removed", onRev);
+  ref.on("child_changed", onChg);
 }
 function onAdd(data){
   var k = data.key;
   var v = data.val();
-  var d = new Date(v.wdate);
-  var month = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
-  var date = String(d.getFullYear()).substr(2)+"년 "+month[d.getMonth()]+zeroAdd(d.getDate())+"일 "+zeroAdd(d.getHours())+":"+zeroAdd(d.getMinutes())+":"+zeroAdd(d.getSeconds());
+  var date = tsChg(v.wdate);
   var icon = "";
   if(user) {
     if(user.uid == v.uid) {
@@ -64,7 +63,7 @@ function onAdd(data){
     }
   }
   var html = '<ul id="'+k+'" data-uid="'+v.uid+'" class="gbook">';
-  html += '<li>'+v.uname+' ('+v.email+') | '+date+'</li>';
+  html += '<li>'+v.uname+' ('+v.email+') | <span>'+date+'</span></li>';
   html += '<li>'+v.content+'</li>';
   html += '<li>'+icon+'</li>';
   html += '</ul>';
@@ -76,9 +75,24 @@ function onRev(data) {
   $("#"+k).remove();
 }
 
+function onChg(data) {
+  var k = data.key;
+  var v = data.val();
+  $("#"+k).children("li").eq(0).children("span").html(tsChg(v.wdate));
+  $("#"+k).children("li").eq(1).html(v.content);
+  $("#"+k).find(".fa-edit").show();
+}
+
 function zeroAdd(n) {
   if(n<10) return "0"+n;
   else return n;
+}
+
+function tsChg(ts) {
+  var d = new Date(ts);
+  var month = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
+  var date = String(d.getFullYear()).substr(2)+"년 "+month[d.getMonth()]+zeroAdd(d.getDate())+"일 "+zeroAdd(d.getHours())+":"+zeroAdd(d.getMinutes())+":"+zeroAdd(d.getSeconds());
+  return date;
 }
 
 $("#save_bt").on("click", function(){
@@ -108,10 +122,22 @@ function onUpdate(obj) {
   html += '<button type="button" class="w3-button w3-orange" style="margin-top:-4px;" onclick="onUpdateDo(this);">수정</button>';
   html += '<button type="button" class="w3-button w3-black" style="margin-top:-4px;" onclick="onCancel(this, \''+v+'\');">취소</button>';
   $target.html(html);
+  $(obj).hide();
 }
 
 function onCancel(obj, val) {
-  var $target = $(obj).parent().html(val); 
+  var $target = $(obj).parent().html(val);
+  $target.parent().parent().find(".fa-edit").show(); 
+}
+
+function onUpdateDo(obj) {
+  var $input = $(obj).prev();
+  var content = $input.val();
+  key = $(obj).parent().parent().attr("id");
+  ref = db.ref("root/gbook/"+key).update({
+    content: content,
+    wdate: Date.now()
+  }); 
 }
 
 function onDelete(obj) {
