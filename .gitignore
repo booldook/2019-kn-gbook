@@ -9,5 +9,6 @@
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
+*.log
 
 # End of https://www.gitignore.io/api/firebase
