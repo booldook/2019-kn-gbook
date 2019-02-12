@@ -23,3 +23,32 @@
 [debug] [2019-02-12T00:20:35.118Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-02-12T00:59:49.982Z] ----------------------------------------------------------------------
+[debug] [2019-02-12T00:59:49.988Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-02-12T00:59:49.988Z] CLI Version:   6.3.1
+[debug] [2019-02-12T00:59:49.989Z] Platform:      win32
+[debug] [2019-02-12T00:59:49.989Z] Node Version:  v10.15.1
+[debug] [2019-02-12T00:59:49.992Z] Time:          Tue Feb 12 2019 09:59:49 GMT+0900 (GMT+09:00)
+[debug] [2019-02-12T00:59:49.993Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-12T00:59:50.018Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-12T00:59:50.019Z] > authorizing via signed-in user
+[debug] [2019-02-12T00:59:50.019Z] [iam] checking project booldook-gbook for permissions ["firebase.projects.get"]
+[debug] [2019-02-12T00:59:50.024Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-02-12T00:59:50.024Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-02-12T00:59:50.396Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-12T00:59:50.411Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/booldook-gbook:testIamPermissions  
+
+[debug] [2019-02-12T00:59:51.609Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-12T00:59:51.612Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/booldook-gbook  
+ 
+[debug] [2019-02-12T00:59:52.750Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\booldook\gbook'...
+[info] 
+[debug] [2019-02-12T00:59:52.757Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/572731860757/clients/_:getWebAppConfig  
+ 
+[debug] [2019-02-12T00:59:53.527Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000

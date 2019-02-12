@@ -1,1 +1,14 @@
 @import 'base.css';
+.wrap {width:100%; max-width:1200px; margin: auto;}
+.panel {background-color:#333; border-bottom:4px solid #999; 
+  padding:0 1rem;}
+  .panel > div {padding:0.5rem;}
+  .logo {float:left; color:#f1f1f1; font-size:1.5rem; font-weight:bold;}
+  .logins {float:right;}
+    #user_email {color:#fc9; margin-right:1rem;}
+    #login_bt {}
+    #logout_bt {display:none;}
+.wrs {border:4px solid rgb(25, 72, 122); margin:2rem 0; padding:0.5rem;}
+  .wrs > li:first-child {float:left; width:calc(100% - 70px);}
+  .wrs > li:last-child {float:right; text-align:right;}
+.gbooks {}
