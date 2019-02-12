@@ -39,11 +39,12 @@ auth.onAuthStateChanged(function(result){
     $("#logout_bt").hide();
     $("#user_email").html('');
   }
+  init();
 });
 
 /***** Database *****/
-init();
 function init() {
+  $(".gbooks").empty();
   ref = db.ref("root/gbook");
   ref.on("child_added", onAdded);
 }
@@ -53,10 +54,17 @@ function onAdded(data){
   var d = new Date(v.wdate);
   var month = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
   var date = String(d.getFullYear()).substr(2)+"년 "+month[d.getMonth()]+zeroAdd(d.getDate())+"일 "+zeroAdd(d.getHours())+":"+zeroAdd(d.getMinutes())+":"+zeroAdd(d.getSeconds());
+  var icon = "";
+  if(user) {
+    if(user.uid == v.uid) {
+      icon += '<i onclick="onUpdate(this);" class="fas fa-edit"></i> ';
+      icon += '<i onclick="onDelete(this);" class="fas fa-trash"></i>';
+    }
+  }
   var html = '<ul id="'+k+'" data-uid="'+v.uid+'" class="gbook">';
   html += '<li>'+v.uname+' ('+v.email+') | '+date+'</li>';
   html += '<li>'+v.content+'</li>';
-  html += '<li>icon</li>';
+  html += '<li>'+icon+'</li>';
   html += '</ul>';
   $(".gbooks").prepend(html);
 }

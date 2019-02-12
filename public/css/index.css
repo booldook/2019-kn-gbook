@@ -14,4 +14,6 @@
 .gbook {margin:1.5rem 10px; box-shadow:0 0 20px rgba(0,0,0,0.2); border-radius:10px; border:1px solid #ddd; padding:1rem;}
 .gbook > li:first-child {color:#999;}
 .gbook > li:nth-child(2) {color:rgb(15, 49, 80); border:1px solid rgb(187, 206, 243); font-size:1.25rem; padding:0.5rem;}
-.gbook > li:first-child {color:#999;}
+.gbook > li:last-child {padding:0.5rem 0;}
+.gbook .fas {color:#999; cursor:pointer; font-size:0.875rem;}
+.gbook .fas:hover {color:#f60;}
