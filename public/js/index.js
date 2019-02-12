@@ -47,6 +47,7 @@ auth.onAuthStateChanged(function(result){
 function init() {
   $(".gbooks").empty();
   ref = db.ref("root/gbook");
+  ref.off();
   ref.on("child_added", onAdd);
   ref.on("child_removed", onRev);
   ref.on("child_changed", onChg);
