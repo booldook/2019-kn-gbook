@@ -15,7 +15,7 @@ var db = firebase.database();
 var googleAuth = new firebase.auth.GoogleAuthProvider();
 var ref = null;
 var user = null;
-var key = '';
+var key = null;
 
 /***** Auth *****/
 $("#login_bt").on("click", function(){
@@ -76,9 +76,6 @@ function onRev(data) {
   $("#"+k).remove();
 }
 
-
-
-
 function zeroAdd(n) {
   if(n<10) return "0"+n;
   else return n;
@@ -103,8 +100,13 @@ $("#save_bt").on("click", function(){
   }
 });
 
-function onUpdate() {
-
+function onUpdate(obj) {
+  key = $(obj).parent().parent().attr("id");
+  var $target = $(obj).parent().prev();
+  var v = $(obj).parent().prev().html();
+  var html = '<input type="text" class="w3-input w3-show-inline-block w3-border w3-border-red" style="width:calc(100% - 80px);" value="'+v+'">&nbsp;';
+  html += '<button type="button" class="w3-button w3-orange" style="margin-top:-4px;">수정</button>';
+  $target.html(html);
 }
 
 function onDelete(obj) {
