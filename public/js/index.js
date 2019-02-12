@@ -54,9 +54,9 @@ function onAdded(data){
   var month = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
   var date = String(d.getFullYear()).substr(2)+"년 "+month[d.getMonth()]+zeroAdd(d.getDate())+"일 "+zeroAdd(d.getHours())+":"+zeroAdd(d.getMinutes())+":"+zeroAdd(d.getSeconds());
   var html = '<ul id="'+k+'" data-uid="'+v.uid+'" class="gbook">';
-  html += '<li>'+v.uname+' ('+v.email+')</li>';
+  html += '<li>'+v.uname+' ('+v.email+') | '+date+'</li>';
   html += '<li>'+v.content+'</li>';
-  html += '<li>'+date+'</li>';
+  html += '<li>icon</li>';
   html += '</ul>';
   $(".gbooks").prepend(html);
 }
