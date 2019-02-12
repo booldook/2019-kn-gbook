@@ -15,6 +15,7 @@ var db = firebase.database();
 var googleAuth = new firebase.auth.GoogleAuthProvider();
 var ref = null;
 var user = null;
+var key = '';
 
 /***** Auth *****/
 $("#login_bt").on("click", function(){
@@ -46,9 +47,10 @@ auth.onAuthStateChanged(function(result){
 function init() {
   $(".gbooks").empty();
   ref = db.ref("root/gbook");
-  ref.on("child_added", onAdded);
+  ref.on("child_added", onAdd);
+  ref.on("child_removed", onRev);
 }
-function onAdded(data){
+function onAdd(data){
   var k = data.key;
   var v = data.val();
   var d = new Date(v.wdate);
@@ -68,6 +70,14 @@ function onAdded(data){
   html += '</ul>';
   $(".gbooks").prepend(html);
 }
+
+function onRev(data) {
+  var k = data.key;
+  $("#"+k).remove();
+}
+
+
+
 
 function zeroAdd(n) {
   if(n<10) return "0"+n;
@@ -92,3 +102,14 @@ $("#save_bt").on("click", function(){
     $content.val('');
   }
 });
+
+function onUpdate() {
+
+}
+
+function onDelete(obj) {
+  key = $(obj).parent().parent().attr("id");
+  if(confirm("정말 삭제하시겠습니까?")) {
+    db.ref("root/gbook/"+key).remove();
+  }
+}
